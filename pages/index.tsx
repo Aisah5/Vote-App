@@ -5,8 +5,12 @@ import Menu from '../components/Menu'
 import styles from '../styles/Home.module.css'
 import Button from '../components/Button'
 import { LinkIcon, TrashIcon } from '@heroicons/react/24/solid'
+import { useRouter } from "next/router";
+// import Image from 'foto.jpg';
+
 
 const Home: NextPage = () => {
+  const router = useRouter();
   return (
     <div className="container mx-auto">
       <Head>
@@ -21,17 +25,22 @@ const Home: NextPage = () => {
           <div className='flex flex-col place-items-center py-40 space-y-3'>
             <h1 className="text-5xl font-bold">Ayo Mulai Voting</h1>
             <h2 className="text-lg bg-zinc-100 px-3">Web Voting Terbaik</h2>
-            <Image
-              src={"/assets/fotos.svg"}
+            <img
+              src="foto.jpg"
+              alt="foto"
+              width="500" height="600"
+            />
+            {/* <Image
+              src={"foto.jpg"}
               width={150}
               height={150}
-              alt="Logo"
-            />
+              alt="foto"
+            /> */}
           
 
           <div className='space-x-10'>
-            <Button text='Buat Vote Baru' type='primary' className='font-bold'/>
-            <Button text='Ikutan Vote' type='secondary' className='font-bold'/>
+            <Button text='Buat Vote Baru' type='primary' className='font-bold' onclick={()=>router.push("/vote/create")}/>
+            <Button text='Ikutan Vote' type='secondary' className='font-bold' onclick={()=>router.push("/participant")}/>
           </div>
           </div>
         {/* </Headers> */}
